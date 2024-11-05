@@ -9,11 +9,21 @@ public class Shop : MonoBehaviour
     public TextMeshProUGUI countText;
     public int count = 0;
 
+    public int cpb = 1;
+    public float bakerSpeed = 2f;
+
+    private float s;
+    
+
     private Clicker clicker;
+    
 
     private void Start() 
     {
         clicker = FindObjectOfType<Clicker>();
+        InvokeRepeating("Cook", 0, bakerSpeed);
+        InvokeRepeating("clicksPerSecond", 0, 0);
+        
     }
 
 
@@ -23,6 +33,7 @@ public class Shop : MonoBehaviour
         {
             clicker.clicks -= price;
             UiManager.instance.UpdateClicks(clicker.clicks);
+            UiManager.instance.UpdateCps(s);
             
             count++;
             countText.text = count.ToString();
@@ -30,5 +41,16 @@ public class Shop : MonoBehaviour
             price = (int)(price * 1.1f);//price increase 10%;
             priceText.text = $"Price: {price}";
         }
+    }
+
+    public void clicksPerSecond(){
+        s = clicker.clickps / Time.deltaTime;
+        UiManager.instance.UpdateCps(s);
+        
+    }
+    void Cook(){
+        clicker.clickVFX.Emit(cpb*count);
+        clicker.clicks += cpb*count;
+        UiManager.instance.UpdateClicks(clicker.clicks);
     }
 }
