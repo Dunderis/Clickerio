@@ -9,7 +9,8 @@ public class UiManager : MonoBehaviour
     public static UiManager instance;
 
     public TextMeshProUGUI clickText;
-    public TextMeshProUGUI cpss;
+    public TextMeshProUGUI cpsText;
+    
 
     //step 2: method that executes earlier than Start()
     private void Awake() 
@@ -31,8 +32,10 @@ public class UiManager : MonoBehaviour
     {
         clickText.text = clicks.ToString();
     }
-    public void UpdateCps(float cps)
+
+    public void UpdateCps(int cps)
     {
-        cpss.text = cps.ToString();
+        cpsText.text = cps.ToString() + " cps";
     }
+
 }

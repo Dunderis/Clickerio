@@ -20,10 +20,16 @@ public class Shop : MonoBehaviour
 
     private void Start() 
     {
+        price = PlayerPrefs.GetInt("price", 10);
+        count = PlayerPrefs.GetInt("cook", 0);
+        countText.text = count.ToString();
+        priceText.text = $"Price: {price}";
+
         clicker = FindObjectOfType<Clicker>();
         InvokeRepeating("Cook", 0, bakerSpeed);
-        InvokeRepeating("clicksPerSecond", 0, 0);
         
+
+
     }
 
 
@@ -33,7 +39,7 @@ public class Shop : MonoBehaviour
         {
             clicker.clicks -= price;
             UiManager.instance.UpdateClicks(clicker.clicks);
-            UiManager.instance.UpdateCps(s);
+            
             
             count++;
             countText.text = count.ToString();
@@ -43,14 +49,28 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void clicksPerSecond(){
-        s = clicker.clickps / Time.deltaTime;
-        UiManager.instance.UpdateCps(s);
-        
-    }
+
     void Cook(){
         clicker.clickVFX.Emit(cpb*count);
         clicker.clicks += cpb*count;
         UiManager.instance.UpdateClicks(clicker.clicks);
     }
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            Save();
+        }
+    }
+    private void OnApplicationQuit()
+    {
+        Save();
+    }
+    public void Save()
+    {
+        PlayerPrefs.SetInt("cook", count);
+        PlayerPrefs.SetInt("price", price);
+        PlayerPrefs.Save();
+    }
+
 }

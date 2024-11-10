@@ -170,6 +170,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8fb328f695c114375b009bb06d004af6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: 8fb328f695c114375b009bb06d004af6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -4548727101508622366, guid: 8fb328f695c114375b009bb06d004af6, type: 3}
     - target: {fileID: 919132149155446097, guid: 8fb328f695c114375b009bb06d004af6, type: 3}
       propertyPath: m_Name
       value: Bread
@@ -440,7 +448,7 @@ GameObject:
   - component: {fileID: 713716129}
   - component: {fileID: 713716128}
   m_Layer: 5
-  m_Name: Cps
+  m_Name: ' Cps Text'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -466,7 +474,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 0 cps
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -493,8 +501,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23.94
-  m_fontSizeBase: 23.94
+  m_fontSize: 13.8
+  m_fontSizeBase: 13.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5846,7 +5854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickText: {fileID: 1874047838}
-  cpss: {fileID: 713716128}
+  cpsText: {fileID: 713716128}
 --- !u!1 &1209441304
 GameObject:
   m_ObjectHideFlags: 0
@@ -6487,6 +6495,9 @@ MonoBehaviour:
   clickVFX: {fileID: 747103240}
   clickps: 0
   clicks: 0
+  filter: {fileID: 0}
+  mesh: {fileID: -7500455809442388728, guid: 5be5befc74bb74f1f8a09c679fa3895e, type: 3}
+  player: {fileID: 1907183065}
 --- !u!64 &1907183067
 MeshCollider:
   m_ObjectHideFlags: 0
